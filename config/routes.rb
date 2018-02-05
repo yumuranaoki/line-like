@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :relationships, only: [:create, :destroy]
+  get '/friend', to: 'users#following'
+  get '/p_friend', to: 'users#followers'
   root 'static_pages#home'
 end
