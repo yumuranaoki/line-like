@@ -6,11 +6,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @access_id = SecureRandom::urlsafe_base64(64)
   end
+
 
   def following
   end
 
   def followers
   end
+
 end

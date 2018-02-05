@@ -1,1 +1,28 @@
-<h1><%= current_user.email %></h1>
+<h1><%= @user.email %></h1>
+
+<h2>友達</h2>
+<ul>
+  <% @user.followeds.each do |following| %>
+
+    <li><%= following.email %></li>
+    <li>
+      <% if !current_user.following?(following) %>
+        <%= form_for(current_user.active_relationships.build) do |f| %>
+          <div><%= hidden_field_tag :followed_id, following.id %></div>
+          <%= f.submit "友達に追加", class: "btn btn-secondary" %>
+        <% end %>
+      <% else %>
+        <%= form_for(current_user.active_relationships.find_by(followed_id: following.id), html: {method: :delete}) do |f| %>
+          <%= f.submit "友達から削除", class: "btn btn-secondary" %>
+        <% end %>
+      <% end %>
+    </li>
+    <li>
+      <%= form_for(Room.new, url: rooms_path) do |f| %>
+        <div><%= hidden_field_tag :access_id, @access_id %></div>
+        <%= f.submit "トーク", class: "btn btn-primary" %>
+      <% end %>
+    </li>
+
+  <% end %>
+</ul>

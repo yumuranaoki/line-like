@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :followeds, through: :active_relationships
   has_many :followers, through: :passive_relationships
 
+  validates :account_name, uniqueness: true
+
 
   #インスタンスメソッド
   def follow(other_user)
