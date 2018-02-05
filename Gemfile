@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
+gem "font-awesome-rails", '~> 4.7.0.3'
 gem 'rails-controller-testing', '~> 1.0.1'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'bootstrap', '~> 4.0.0'

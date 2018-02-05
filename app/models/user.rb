@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :followeds, through: :active_relationships
   has_many :followers, through: :passive_relationships
 
+
+  #インスタンスメソッド
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
   end

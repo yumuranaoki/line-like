@@ -1,5 +1,12 @@
 require 'test_helper'
 
-class UsersControllerTest < ActionDispatch::IntegrationTest
+class UsersControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+  def setup
+    @user = users(:john)
+    sign_in(@user)
+  end
+
   
+
 end
