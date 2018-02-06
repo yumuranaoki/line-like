@@ -22,6 +22,7 @@ class User < ApplicationRecord
   has_many :user_followers, through: :passive_user_relationships
 
   validates :account_name, uniqueness: true
+  validates :email, uniqueness: true
 
 
   #インスタンスメソッド

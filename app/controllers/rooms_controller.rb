@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def show
     @room = Room.find_by(access_id: params[:access_id])
+    redirect_for_stranger(@room)
   end
 
   def create
@@ -17,5 +18,14 @@ class RoomsController < ApplicationController
 
   def destroy
   end
+
+    private
+
+      def redirect_for_stranger(room)
+        if !current_user.following_room?(room)
+          flash[:danger] = "トークに参加できません"
+          redirect_to you_path
+        end
+      end
 
 end
