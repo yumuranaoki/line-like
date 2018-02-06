@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/you', to: "users#show"
 
   resources :relationships, only: [:create, :destroy]
+  resources :room_relationships, only: [:create, :destroy]
+  resources :user_relationships, only: [:create, :destroy]
+
   get '/friend', to: 'users#following'
   get '/p_friend', to: 'users#followers'
   #消す

@@ -1,10 +1,10 @@
-<h1><%= @user.email %></h1>
+<h1><%= @user.name %></h1>
 
 <h2>友達</h2>
 <ul>
   <% @user.followeds.each do |following| %>
 
-    <li><%= following.email %></li>
+    <li><%= following.name %></li>
     <li>
       <% if !current_user.following?(following) %>
         <%= form_for(current_user.active_relationships.build) do |f| %>
@@ -19,10 +19,30 @@
     </li>
     <li>
       <%= form_for(Room.new, url: rooms_path) do |f| %>
-        <div><%= hidden_field_tag :access_id, @access_id %></div>
+        <div>
+          <%= hidden_field_tag :access_id, @access_id %>
+          <%= hidden_field_tag :user_id, following.id %>
+        </div>
         <%= f.submit "トーク", class: "btn btn-primary" %>
       <% end %>
     </li>
 
+  <% end %>
+</ul>
+
+<h2>トーク</h2>
+<ul>
+  <% @user.followed_rooms.each do |room| %>
+    <li>
+      <%= link_to room_path(access_id: room.access_id) do %>
+      <div>
+        <% room.followed_users.each do |user| %>
+          <% if user != current_user %>
+            <li><%= user.name %></li>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    </li>
   <% end %>
 </ul>

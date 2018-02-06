@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180205182650) do
+ActiveRecord::Schema.define(version: 20180206065101) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
@@ -22,10 +22,24 @@ ActiveRecord::Schema.define(version: 20180205182650) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "room_relationships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "room_follower_id"
+    t.integer "followed_room_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "access_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_relationships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_follower_id"
+    t.integer "followed_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,8 +55,8 @@ ActiveRecord::Schema.define(version: 20180205182650) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "account_name"
     t.string "name"
+    t.string "account_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
