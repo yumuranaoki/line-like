@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/messages', to: "messages#create", as: 'messages'
+
   get '/room/:access_id', to: "rooms#show", as: 'room'
   post 'rooms', to: 'rooms#create'
 

@@ -35,13 +35,11 @@
   <% @user.followed_rooms.each do |room| %>
     <li>
       <%= link_to room_path(access_id: room.access_id) do %>
-      <div>
         <% room.followed_users.each do |user| %>
           <% if user != current_user %>
-            <li><%= user.name %></li>
+            <%= user.name %>
           <% end %>
         <% end %>
-      </div>
       <% end %>
     </li>
   <% end %>

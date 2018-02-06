@@ -20,6 +20,7 @@ class User < ApplicationRecord
                                       foreign_key: "followed_user_id",
                                       dependent: :destroy
   has_many :user_followers, through: :passive_user_relationships
+  has_many :messages
 
   validates :account_name, uniqueness: true
   validates :email, uniqueness: true

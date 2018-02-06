@@ -7,6 +7,7 @@ class Room < ApplicationRecord
                                       foreign_key: "user_follower_id",
                                       dependent: :destroy
   has_many :followed_users, through: :active_user_relationships
+  has_many :messages
 
   #userのfollow
   def follow_user(other_user)

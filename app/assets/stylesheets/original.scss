@@ -1,6 +1,40 @@
 @import 'bootstrap';
 
 //all
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 li {
   list-style:none;
+}
+
+//room#show
+.height {
+  height: 100%;
+  border: solid 1px #000;
+}
+
+.talkroom {
+  border: 1px solid #000;
+  background-color: rgba(40, 191, 231, 0.43);
+  height: auto;
+  min-height: 100%;
+  position: relative;
+}
+
+.talk-right {
+  margin-left: 100px;
+  margin-top: 10px;
+}
+
+.talk-left {
+  margin-left: -45px;
+  width: 50%;
+}
+
+.message-content {
+  background-color: white;
 }
