@@ -1,3 +1,4 @@
+<!--
 <div class="container">
   <%= link_to "line", root_path %>
   <% if user_signed_in? %>
@@ -8,3 +9,33 @@
     <%= link_to 'sign in', user_session_path %>
   <% end %>
 </div>
+-->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+  <div class="container position-relative">
+  <%= link_to "Line", root_path, class: 'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% if user_signed_in? %>
+      <li class="nav-item dropdown navbar-right">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.name %>
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "edit profile", edit_user_registration_path %>
+          <div class="dropdown-divider"></div>
+          <%= link_to 'log out', destroy_user_session_path, method: :delete %>
+
+      </li>
+      <% else %>
+      <% end %>
+    </ul>
+  </div>
+  </div>
+</nav>

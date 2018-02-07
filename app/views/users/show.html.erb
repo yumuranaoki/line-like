@@ -1,6 +1,9 @@
 <h1><%= @user.name %></h1>
 
-<h2>友達</h2>
+<h2>ともだち</h2>
+
+<p><%= link_to 'ともだちをさがす', search_path %></p>
+
 <ul>
   <% @user.followeds.each do |following| %>
 

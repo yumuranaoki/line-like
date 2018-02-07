@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get '/you', to: "users#show"
+  get '/search', to: "users#search"
 
   resources :relationships, only: [:create, :destroy]
   resources :room_relationships, only: [:create, :destroy]
