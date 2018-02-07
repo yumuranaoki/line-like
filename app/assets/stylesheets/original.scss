@@ -36,6 +36,7 @@ li {
   height: auto;
   min-height: 100%;
   position: relative;
+  overflow: auto;
 }
 
 .talk-right {
@@ -50,4 +51,5 @@ li {
 
 .message-content {
   background-color: white;
+  word-wrap: break-word;
 }
