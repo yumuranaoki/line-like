@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   def show
     @room = Room.find_by(access_id: params[:access_id])
+    @room.others_notification(current_user).destroy_all
     redirect_for_stranger(@room)
   end
 
@@ -8,17 +9,18 @@ class RoomsController < ApplicationController
     flag = true
     exiting_room = ''
     invited = User.find(params[:user_id])
-    current_user.followed_rooms.each do |r|
-      if r.following_user?(invited)
-        logger.debug("デバッグ1: #{r.id}")
-        flag = false
-        exiting_room = r
-        logger.debug("デバッグ1: #{exiting_room.access_id}")
-        break
+    if !current_user.followed_rooms.empty?
+      current_user.followed_rooms.each do |r|
+        if r.following_user?(invited)
+          logger.debug("デバッグ1: #{r.id}")
+          flag = false
+          exiting_room = r
+          logger.debug("デバッグ1: #{exiting_room.access_id}")
+          break
+        end
       end
     end
 
-    logger.debug("デバッグ2: #{exiting_room.id}")
     if flag == false
       access_id = exiting_room.access_id
       redirect_to room_path(access_id: access_id)
@@ -35,6 +37,9 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def react
   end
 
     private

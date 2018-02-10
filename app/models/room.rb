@@ -8,6 +8,9 @@ class Room < ApplicationRecord
                                       dependent: :destroy
   has_many :followed_users, through: :active_user_relationships
   has_many :messages
+  has_many :notifications
+
+  default_scope -> { order(updated_at: :desc) }
 
   #userのfollow
   def follow_user(other_user)
@@ -22,4 +25,7 @@ class Room < ApplicationRecord
     followed_users.include?(other_user)
   end
 
+  def others_notification(user)
+    notifications.where.not(user_id: user.id)
+  end
 end

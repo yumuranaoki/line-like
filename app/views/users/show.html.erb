@@ -35,7 +35,7 @@
 
 <h2>トーク</h2>
 <ul>
-  <% @user.followed_rooms.each do |room| %>
+  <% @rooms.each do |room| %>
     <li>
       <%= link_to room_path(access_id: room.access_id) do %>
         <% room.followed_users.each do |user| %>
@@ -43,6 +43,10 @@
             <%= user.name %>
           <% end %>
         <% end %>
+        <% if !room.messages.empty? %>
+          <%= room.messages.last.content.slice(0, 40) %>
+        <% end %>
+        <%= (room.others_notification(current_user).count == 0) ? '' : room.others_notification(current_user).count %>
       <% end %>
     </li>
   <% end %>

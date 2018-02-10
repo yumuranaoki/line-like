@@ -5,11 +5,15 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0px;
-  background-color: rgb(220, 227, 218)
+  background-color: rgb(220, 227, 218);
 }
 
 li {
   list-style:none;
+}
+
+.padding {
+  padding: 0px; 
 }
 
 //header
@@ -39,6 +43,15 @@ li {
   overflow: auto;
 }
 
+.talkroom-scroll {
+  background-color: rgba(40, 191, 231, 0.43);
+  height: auto;
+  min-height: 100%;
+  position: relative;
+  overflow: auto;
+}
+
+
 .talk-right {
   margin-left: 100px;
   margin-top: 10px;
@@ -52,4 +65,9 @@ li {
 .message-content {
   background-color: white;
   word-wrap: break-word;
+}
+
+.side {
+  height: 100%;
+  background-color: rgb(220, 227, 218);
 }

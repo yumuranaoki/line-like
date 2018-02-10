@@ -21,6 +21,7 @@ class User < ApplicationRecord
                                       dependent: :destroy
   has_many :user_followers, through: :passive_user_relationships
   has_many :messages
+  has_many :notifications
 
   validates :account_name, uniqueness: true
   validates :email, uniqueness: true
@@ -53,4 +54,5 @@ class User < ApplicationRecord
   def following_room?(other_room)
     followed_rooms.include?(other_room)
   end
+
 end
