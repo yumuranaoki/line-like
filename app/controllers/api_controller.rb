@@ -9,7 +9,8 @@ class ApiController < ApplicationController
         'id': room.id,
         'user': room.followed_users.where.not(id: user.id).first.name,
         'user_id': room.followed_users.where.not(id: user.id).first.id,
-        'comment': (room.messages.last.content.length > 20) ? room.messages.last.content.slice(0,20) << '...' : room.messages.last.content
+        'comment': (room.messages.last.content.length > 20) ? room.messages.last.content.slice(0,20) << '...' : room.messages.last.content,
+        'notifications': room.notifications.count
       }
       user_room << tmp
     end

@@ -7,6 +7,9 @@ class UsersControllerTest < ActionController::TestCase
     sign_in(@user)
   end
 
-  
+  test 'should get show' do
+    
+  end
+
 
 end

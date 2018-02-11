@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180209162409) do
 
+  create_table "group_relationships", force: :cascade do |t|
+  end
+
   create_table "messages", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"

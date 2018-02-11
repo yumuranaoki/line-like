@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   post 'rooms', to: 'rooms#create'
 
   devise_for :users
-  get '/you', to: "users#show"
+  get '/you', to: "users#show", as: 'you'
   get '/search', to: "users#search"
+  
   #api(thread一覧を取得する（数を制限する）)
   get '/user_rooms/:id', to: "api#user_rooms"
   #api(talk一覧を取得する（数を制限する）)
@@ -19,12 +20,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :room_relationships, only: [:create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
-
-  get '/friend', to: 'users#following'
-  get '/p_friend', to: 'users#followers'
-  #消す
-  get '/users', to: 'users#index'
-  #get '/react', to: 'rooms#react'
 
   root 'static_pages#home'
 end
