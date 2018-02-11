@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   get '/you', to: "users#show"
   get '/search', to: "users#search"
   #api(thread一覧を取得する（数を制限する）)
-  get '/user_rooms/:user_id', to: "users#user_rooms"
+  get '/user_rooms/:id', to: "api#user_rooms"
   #api(talk一覧を取得する（数を制限する）)
-  get '/user_talks/:user_id', to: "users#user_talks"
+  get '/user_talks/:id', to: "api#user_talks"
+  #api(followeds一覧を取得する（数を制限する）)
+  get '/user_followers/:id', to: "api#user_followings"
 
   resources :relationships, only: [:create, :destroy]
   resources :room_relationships, only: [:create, :destroy]
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
   get '/p_friend', to: 'users#followers'
   #消す
   get '/users', to: 'users#index'
-  get '/react', to: 'rooms#react'
+  #get '/react', to: 'rooms#react'
 
   root 'static_pages#home'
 end

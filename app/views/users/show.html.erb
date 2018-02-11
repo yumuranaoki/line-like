@@ -1,53 +1,10 @@
-<h1><%= @user.name %></h1>
+<div class="row height padding">
+  <div class="col-12 height padding">
+    <div id="talkroom-content" class="height"></div>
+  </div>
+</div>
 
-<h2>ともだち</h2>
+<span id="object_id" reactdata="<%= current_user.id %>"></span>
+<span id="object_name" reactdata="<%= current_user.name %>"></span>
 
-<p><%= link_to 'ともだちをさがす', search_path %></p>
-
-<ul>
-  <% @user.followeds.each do |following| %>
-
-    <li><%= following.name %></li>
-    <li>
-      <% if !current_user.following?(following) %>
-        <%= form_for(current_user.active_relationships.build) do |f| %>
-          <div><%= hidden_field_tag :followed_id, following.id %></div>
-          <%= f.submit "友達に追加", class: "btn btn-secondary" %>
-        <% end %>
-      <% else %>
-        <%= form_for(current_user.active_relationships.find_by(followed_id: following.id), html: {method: :delete}) do |f| %>
-          <%= f.submit "友達から削除", class: "btn btn-secondary" %>
-        <% end %>
-      <% end %>
-    </li>
-    <li>
-      <%= form_for(Room.new, url: rooms_path) do |f| %>
-        <div>
-          <%= hidden_field_tag :access_id, @access_id %>
-          <%= hidden_field_tag :user_id, following.id %>
-        </div>
-        <%= f.submit "トーク", class: "btn btn-primary" %>
-      <% end %>
-    </li>
-
-  <% end %>
-</ul>
-
-<h2>トーク</h2>
-<ul>
-  <% @rooms.each do |room| %>
-    <li>
-      <%= link_to room_path(access_id: room.access_id) do %>
-        <% room.followed_users.each do |user| %>
-          <% if user != current_user %>
-            <%= user.name %>
-          <% end %>
-        <% end %>
-        <% if !room.messages.empty? %>
-          <%= room.messages.last.content.slice(0, 40) %>
-        <% end %>
-        <%= (room.others_notification(current_user).count == 0) ? '' : room.others_notification(current_user).count %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<%= javascript_pack_tag 'talkroom' %>

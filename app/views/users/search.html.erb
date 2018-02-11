@@ -1,33 +1,43 @@
-<h1>search</h1>
-<%= form_with url: search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :search %>
-  <%= f.submit 'search', class: "btn btn-primary" %>
-<% end %>
-<h2>ともだち検索</h2>
-
-  <% if @user %>
-    <%= @user.name %>
-    <% if !current_user.following?(@user) %>
-      <%= form_for(current_user.active_relationships.build) do |f| %>
-        <div><%= hidden_field_tag :followed_id, @user.id %></div>
-        <%= f.submit "友達に追加", class: "btn btn-primary" %>
+<div class="row">
+  <div class="col-sm-5">
+    <h1>ともだち検索</h1>
+    <p>account nameでともだちを検索してください</p>
+    <div class="search-form">
+      <%= form_with url: search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :search %>
+        <%= f.submit 'search', class: "btn btn-primary" %>
       <% end %>
-    <% else %>
-      <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
-        <%= f.submit "友達から削除", class: "btn btn-secondary" %>
-      <% end %>
-    <% end %>
-  <% end %>
+    </div>
 
-<h2>ともだちかも</h2>
-  <ul>
-    <% @followers.each do |follower| %>
-      <li class="d-inline"><%= follower.name %></li>
-      <li class="d-inline">
-        <%= form_for(current_user.active_relationships.build) do |f| %>
-          <%= hidden_field_tag :followed_id, follower.id %>
-          <%= f.submit "友達に追加", class: "btn btn-primary" %>
+    <div class="searched-friend">
+      <% if @user %>
+        <%= @user.name %>
+        <% if !current_user.following?(@user) %>
+          <%= form_for(current_user.active_relationships.build) do |f| %>
+            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+            <%= f.submit "友達に追加", class: "btn btn-primary" %>
+          <% end %>
+        <% else %>
+          <%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
+            <%= f.submit "友達から削除", class: "btn btn-secondary" %>
+          <% end %>
         <% end %>
-      </li>
-    <% end %>
-  </ul>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col-sm-5 offset-sm-2">
+    <h1>ともだちかも</h2>
+      <ul>
+        <% @followers.each do |follower| %>
+          <li class="d-inline"><%= follower.name %></li>
+          <li class="d-inline">
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <%= hidden_field_tag :followed_id, follower.id %>
+              <%= f.submit "友達に追加", class: "btn btn-primary" %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+  </div>
+</div>

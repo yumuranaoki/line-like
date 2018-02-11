@@ -20,6 +20,8 @@ class List extends React.Component {
               name={this.props.threadData[i].user}
               comment={this.props.threadData[i].comment}
               onThread={() => this.props.onThread(i)}
+              loadingThread={this.props.loadingThread}
+              getThreadError={this.props.getThreadError}
             />
           </div>
         )
@@ -30,6 +32,8 @@ class List extends React.Component {
               name={this.props.threadData[i].user}
               comment={this.props.threadData[i].comment}
               onThread={() => this.props.onThread(i)}
+              loadingThread={this.props.loadingThread}
+              getThreadError={this.props.getThreadError}
             />
           </div>
         )
