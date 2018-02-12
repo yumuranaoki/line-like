@@ -71,7 +71,7 @@ export const loadingFollowing = status => ({
 
 export const fetchTalk = url => {
   return dispatch => {
-    dispatch(loadingTalk(true));
+
 
     fetch(url)
       .then((response) => {
@@ -89,7 +89,7 @@ export const fetchTalk = url => {
 
 export const fetchThread = url => {
   return dispatch => {
-    dispatch(loadingThread(true));
+    
     fetch(url)
       .then((response) => {
         if (!response.ok) {

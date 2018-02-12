@@ -37,7 +37,10 @@ class Talkroom extends React.Component {
         received: function(data) {
           console.log("受信しました!");
           console.log(data);
-          this.props.receivedData(data);
+          const talkUrl = 'http://localhost:3000/user_talks/' + document.getElementById("object_id").getAttribute("reactdata");
+          const threadUrl = 'http://localhost:3000/user_rooms/' + document.getElementById("object_id").getAttribute("reactdata");
+          this.props.fetchTalkData(talkUrl);
+          this.props.fetchThreadData(threadUrl);
         }.bind(this),
         speak: function(message, user_id, user_name, room_id) {
           return this.perform('speak', {
