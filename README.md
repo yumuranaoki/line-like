@@ -8,7 +8,7 @@
 *ともだち検索  
 
 ## download
-*githubからダウンロード
-*bundle install
-*yarn install
+*githubからダウンロード  
+*bundle install  
+*yarn install  
 *rails db:migrate
