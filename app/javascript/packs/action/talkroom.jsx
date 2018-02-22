@@ -1,19 +1,19 @@
-export const handleThread = index => {
+export const clickThread = index => {
   return {
     type: 'CLICK_THREAD',
     selected: index
   };
 }
 
-export const handleDrawer = () => {
+export const handleToggle = () => {
   return {
-    type: 'HANDLE_DRAWER'
+    type: 'HANDLE_TOGGLE'
   };
 }
 
-export const handleList = index => {
+export const clickList = index => {
   return {
-    type: 'HANDLE_LIST',
+    type: 'CLICK_LIST',
     selectedUser: index
   };
 }
@@ -33,11 +33,6 @@ export const fetchFollowingSuccess = following => ({
   followingData: following
 })
 
-
-export const fetchTalkByData = data => ({
-  type: "FETCH_TALK_BY_DATA",
-  talkDataByData: data
-})
 
 export const getTalkError = status => ({
   type: 'GET_TALK_ERROR',
@@ -89,7 +84,7 @@ export const fetchTalk = url => {
 
 export const fetchThread = url => {
   return dispatch => {
-    
+
     fetch(url)
       .then((response) => {
         if (!response.ok) {

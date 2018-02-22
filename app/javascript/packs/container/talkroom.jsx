@@ -1,8 +1,8 @@
 import React from 'react';
 import Talkroom from '../component/talkroom/talkroom';
 import {connect} from 'react-redux';
-import {handleThread, fetchTalk, fetchThread, fetchTalkByData,
-        handleDrawer, fetchFollower, handleList, getTalkError, getThreadError,
+import {clickThread, fetchTalk, fetchThread,
+        handleToggle, fetchFollower, clickList, getTalkError, getThreadError,
         getFollowingError, loadingTalk, loadingThread, loadingFollowing} from '../action/talkroom';
 
 
@@ -23,13 +23,12 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  clickThread: (index) => dispatch(handleThread(index)),
-  clickList: (index) => dispatch(handleList(index)),
+  clickThread: (index) => dispatch(clickThread(index)),
+  clickList: (index) => dispatch(clickList(index)),
   fetchTalkData: (url) => dispatch(fetchTalk(url)),
   fetchThreadData: (url) => dispatch(fetchThread(url)),
   fetchfollowerData: (url) => dispatch(fetchFollower(url)),
-  receivedData: (data) => dispatch(fetchTalkByData(data)),
-  handleToggle: () => dispatch(handleDrawer())
+  handleToggle: () => dispatch(handleToggle())
 })
 
 

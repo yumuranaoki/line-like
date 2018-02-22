@@ -3,7 +3,7 @@ const reducer = (state, action) => {
     case 'CLICK_THREAD':
       return Object.assign({}, state, {selected: action.selected})
 
-    case 'HANDLE_LIST':
+    case 'CLICK_LIST':
       let userList = [];
       for (let i in state.threadData){
         userList.push(state.threadData[i].user_id)
@@ -60,7 +60,7 @@ const reducer = (state, action) => {
     case "FETCH_FOLLOWING_SUCCESS":
       return Object.assign({}, state, {followingData: action.followingData})
 
-    case 'HANDLE_DRAWER':
+    case 'HANDLE_TOGGLE':
       return Object.assign({}, state, {drawerOpen: !state.drawerOpen})
 
     case 'GET_TALK_ERROR':
