@@ -21,22 +21,5 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-    @users = User.all
-  end
-
-  def show
-    #@user = current_user
-    #@rooms = @user.followed_rooms
-    #@access_id = SecureRandom::urlsafe_base64(64)
-  end
-
-
-
-  def following
-  end
-
-  def followers
-  end
 
 end

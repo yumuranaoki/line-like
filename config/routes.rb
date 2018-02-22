@@ -3,13 +3,12 @@ Rails.application.routes.draw do
   #api
   get '/room/:access_id/messages', to: "messages#index", as: 'messages_index'
 
-  get '/room/:access_id', to: "rooms#show", as: 'room'
   post 'rooms', to: 'rooms#create'
 
   devise_for :users
   get '/you', to: "users#show", as: 'you'
   get '/search', to: "users#search"
-  
+
   #api(thread一覧を取得する（数を制限する）)
   get '/user_rooms/:id', to: "api#user_rooms"
   #api(talk一覧を取得する（数を制限する）)
