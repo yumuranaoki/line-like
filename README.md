@@ -1,6 +1,6 @@
 line-like-app
 
-lineやmessangerのようなチャットアプリをrails + react +reduxで作成
+lineやmessangerのようなユーザー間の1対1リアルタイムチャットアプリをrails + react +reduxで作成
 
 -１対１のトーク
 -ともだち検索
