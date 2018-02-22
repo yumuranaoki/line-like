@@ -1,12 +1,14 @@
-line-like-app
+# line-like-app
 
-lineやmessangerのようなユーザー間の1対1リアルタイムチャットアプリをrails + react +reduxで作成
+## 概要
+### lineやmessangerのようなユーザー間の1対1リアルタイムチャットアプリをrails + react +reduxで作成
 
--１対１のトーク
--ともだち検索
+## 機能
+*１対１のトーク  
+*ともだち検索  
 
-
-githubからダウンロード
-bundle install
-yarn install
-rails db:migrate
+## download
+*githubからダウンロード
+*bundle install
+*yarn install
+*rails db:migrate
